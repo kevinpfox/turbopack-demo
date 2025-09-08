@@ -1,15 +1,22 @@
-import { Roboto } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
-export const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
+
+
+const poppins = Poppins({
   subsets: ['latin'],
-  display: 'swap',
+  weight: ['400', '500', '600'],
 });
 
-// Create a theme instance.
-const theme = createTheme({
+// Custom theme KVPs
+const upperTheme = {
+  bcNavy50: '#F2F6F6',
+  bcPurple: 'purple',
+  bodyFontFamily: poppins.style.fontFamily,
+};
+
+const muiTheme = createTheme({
   cssVariables: true,
   palette: {
     primary: {
@@ -23,8 +30,17 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
   },
 });
+
+// Add upper key value pairs into the MUI theme
+// Both are accessible from within any styled template literal block
+// Available from theme object
+const theme = {
+  ...muiTheme,
+  ...upperTheme,
+};
+
 
 export default theme;

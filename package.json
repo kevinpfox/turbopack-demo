@@ -3,7 +3,8 @@
   "version": "7.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "DEV_NEXT=true next dev",
+    "dev-turbo": "DEV_TURBO=true next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "post-update": "echo \"codesandbox preview only, need an update\" && pnpm update --latest"
